@@ -1,0 +1,49 @@
+<!-- admin.html -->
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Painel Admin - Pedidos em Tempo Real</title>
+    <style>
+        .order-card { border: 1px solid #ccc; padding: 15px; margin-bottom: 10px; border-left: 5px solid red; }
+        .paid { border-left-color: green; }
+    </style>
+</head>
+<body>
+    <h1>Painel de Pedidos (Estilo iFood)</h1>
+    <div id="liveOrders"></div>
+
+    <script>
+        // Conecta ao WebSocket do Python
+        const ws = new WebSocket("ws://localhost:8000/ws/admin");
+
+        ws.onmessage = function(event) {
+            const order = JSON.parse(event.data);
+            
+            // Toca um som de notificação de novo pedido
+            new Audio('/campainha-ifood.mp3').play();
+
+            const orderBoard = document.getElementById('liveOrders');
+            const newOrderHtml = `
+                <div class="order-card" id="order-${order.order_id}">
+                    <h2>Pedido #${order.order_id}</h2>
+                    <p>Total: R$ ${order.total}</p>
+                    <p>Status: <strong>${order.status}</strong></p>
+                    <button onclick="updateStatus(${order.order_id}, 'Preparando')">Aceitar Pedido</button>
+                </div>
+            `;
+            // Insere o novo pedido no topo da lista
+            orderBoard.insertAdjacentHTML('afterbegin', newOrderHtml);
+        };
+
+        async function updateStatus(orderId, newStatus) {
+            await fetch(`/api/orders/${orderId}/status`, {
+                method: 'PATCH',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ status: newStatus })
+            });
+            // Lógica para atualizar a UI
+        }
+    </script>
+</body>
+</html>
