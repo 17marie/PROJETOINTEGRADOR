@@ -1,0 +1,129 @@
+:root {
+    --primary: #1e293b;
+    --accent: #2563eb;
+    --danger: #ef4444;
+    --warning: #f59e0b;
+    --success: #10b981;
+    --bg: #f8fafc;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--bg);
+    color: #334155;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background-color: var(--primary);
+    color: white;
+    padding: 20px;
+    text-align: center;
+}
+
+header h1 { margin: 0; font-size: 1.8rem; }
+header p { margin: 5px 0 0 0; color: #94a3b8; }
+
+.container {
+    max-width: 1100px;
+    margin: 20px auto;
+    padding: 0 15px;
+}
+
+.card {
+    background: white;
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 25px;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+.kanban-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 15px;
+}
+
+.kanban-col {
+    background-color: #f1f5f9;
+    border-radius: 6px;
+    padding: 15px;
+}
+
+.kanban-col h3 { font-size: 1rem; margin-top: 0; }
+
+.kanban-item {
+    background: white;
+    padding: 10px 15px;
+    border-radius: 6px;
+    margin-bottom: 10px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+.badge {
+    background: var(--danger);
+    color: white;
+    font-size: 0.75rem;
+    padding: 3px 8px;
+    border-radius: 4px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+}
+
+th, td {
+    padding: 10px;
+    border-bottom: 1px solid #e2e8f0;
+    text-align: left;
+}
+
+th { background-color: #f8fafc; color: #64748b; }
+
+.form-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 10px;
+}
+
+input {
+    padding: 8px 12px;
+    border: 1px solid #cbd5e1;
+    border-radius: 4px;
+}
+
+.btn {
+    background-color: var(--accent);
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.btn:hover { background-color: #1d4ed8; }
+
+.abc-badge {
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-weight: bold;
+    font-size: 0.85rem;
+}
+
+.abc-badge.A { background-color: #fee2e2; color: #991b1b; }
+.abc-badge.B { background-color: #fef3c7; color: #92400e; }
+.abc-badge.C { background-color: #d1fae5; color: #065f46; }
+
+.cmv-tag {
+    background-color: #e0f2fe;
+    color: #0369a1;
+    padding: 3px 8px;
+    border-radius: 4px;
+    font-weight: bold;
+}
+
+.mt-20 { margin-top: 20px; }
